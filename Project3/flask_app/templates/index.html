@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        form {
+            margin: auto;
+            width: 35%;
+        }
+        .result {
+            margin: auto;
+            width: 35%;
+            border: 1px solid #ccc;
+        }        
+    </style>
+  <head>
+    <center>
+        <span style="font-weight: bold; font-size: 2.0em;line-height: 1.0em; color: navy;font-family: arial;">
+            피파 선수 적정 가격예측
+        </span>    
+    </center>
+  </head>
+  <body>
+    <form action ='/' method='POST'>
+        <fieldset>
+            <legend>수치를 입력하세요:</legend>
+            나이 : <br><input name="age" type="number" required><br>
+            키 : <br><input name="height_cm" type="number" required><br>
+            몸무게 : <input name="weight_kgs" type="number" required><br>
+            체형(보통:1, 마름:2, 다부짐:3) : <input name="body_type" type="number" required><br>
+            밸런스 : <input name="balance" type="number" required><br>
+            오버롤 : <input name="overall_rating" type="number" required><br>
+            태그(개수) : <input name="tags" type="number" required><br>
+            개인기(1~5) : <input name="skill_moves" type="number" required><br>
+            <br>
+            <br>
+            <input type="submit">
+        </fieldset>
+    </form> 
+    <div class="result" align="center">
+        {% if result %}
+            {% for variable, value in original_input.items() %}
+                <b>{{ variable }}</b> : {{ value }}<br>
+            {% endfor %}
+            <br>
+            <br> 선수 적정 가격:
+               <p style="font-size:30px">{{ result }}</p>
+        {% endif %}
+    </div>
+  </body>
+</html>
